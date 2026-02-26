@@ -11,10 +11,22 @@ public class Team {
         if (name.isEmpty()) {
             throw new IllegalArgumentException("Team name cannot be empty!");
         }
-        this.name = name;
+        this.name = name.trim();
     }
 
     public String getName() {
         return name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Team team = (Team) o;
+        return Objects.equals(name.toLowerCase(), team.name.toLowerCase());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(name.toLowerCase());
     }
 }

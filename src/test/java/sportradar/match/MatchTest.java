@@ -6,10 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class MatchTest {
-
-    // mocks?
-//    private final Team homeTeam = new Team("Home");
-//    private final Team awayTeam = new Team("Away");
+    
     private Match match;
 
     @BeforeEach
