@@ -15,10 +15,6 @@ class MatchTest {
         Team awayTeam = new Team("Away");
         match = new Match(homeTeam, awayTeam);
     }
-//
-//    @AfterEach
-//    void tearDown() {
-//    }
 
     @Test
     void nullTeamsTest() {
@@ -34,12 +30,16 @@ class MatchTest {
     }
 
     @Test
-    void finishMatchTest() {
-        assertFalse(match.isFinished());
+    void startAndFinishMatchTest() {
+        match.startMatch();
+        match.finishMatch();
+
+        assertTrue(match.isFinished());
     }
 
     @Test
-    void getInitialScoreTest() {
-        // or in score class tests?
+    void createdMatchIsNotStartedByDefaultTest() {
+        assertTrue(match.isFinished());
     }
+
 }

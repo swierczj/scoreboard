@@ -17,6 +17,8 @@ class ScoreTest {
     @Test
     void initialScoreTest() {
         assertEquals(0, score.getTotalGoalsScored());
+        assertEquals(0, score.getHomeGoals());
+        assertEquals(0, score.getAwayGoals());
     }
 
     @Test
