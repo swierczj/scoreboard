@@ -21,6 +21,7 @@ class ScoreTest {
         assertEquals(0, score.getAwayGoals());
     }
 
+    // TODO: change it, score goal doesn't exist now
     @Test
     void homeSideScoresGoalTest() {
         score.scoreGoal(Side.HOME);
@@ -30,6 +31,7 @@ class ScoreTest {
         assertEquals(1, score.getTotalGoalsScored());
     }
 
+    // TODO: same as above
     @Test
     void awaySideScoresGoalTest() {
         score.scoreGoal(Side.AWAY);

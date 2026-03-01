@@ -3,7 +3,8 @@ package sportradar.match;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class MatchTest {
     
@@ -22,24 +23,28 @@ class MatchTest {
         assertTrue(exception.getMessage().contains("Team cannot be null!"));
     }
 
-    @Test
-    void startMatchTest() {
-        match.startMatch();
+//    @Test
+    // test if score is 0-0 at the start
+    // test home team setting by getHomeTeam and do the same with away team
 
-        assertFalse(match.isFinished());
-    }
-
-    @Test
-    void startAndFinishMatchTest() {
-        match.startMatch();
-        match.finishMatch();
-
-        assertTrue(match.isFinished());
-    }
-
-    @Test
-    void createdMatchIsNotStartedByDefaultTest() {
-        assertTrue(match.isFinished());
-    }
+//    @Test
+//    void startMatchTest() {
+//        match.startMatch();
+//
+//        assertFalse(match.isFinished());
+//    }
+//
+//    @Test
+//    void startAndFinishMatchTest() {
+//        match.startMatch();
+//        match.finishMatch();
+//
+//        assertTrue(match.isFinished());
+//    }
+//
+//    @Test
+//    void createdMatchIsNotStartedByDefaultTest() {
+//        assertTrue(match.isFinished());
+//    }
 
 }

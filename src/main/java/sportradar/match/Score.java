@@ -1,10 +1,24 @@
 package sportradar.match;
 
-// or get score from match, and modify to have team the number of goals scored
+import java.util.Objects;
+
 public class Score {
 
-    private int homeGoals = 0;
-    private int awayGoals = 0;
+    private int homeGoals;
+    private int awayGoals;
+
+    public Score() {
+        this.homeGoals = 0;
+        this.awayGoals = 0;
+    }
+
+    public Score(int homeGoals, int awayGoals) {
+        if (homeGoals < 0 || awayGoals < 0) {
+            throw new IllegalArgumentException("Score can't be negative!");
+        }
+        this.homeGoals = homeGoals;
+        this.awayGoals = awayGoals;
+    }
 
     public int getHomeGoals() {
         return homeGoals;
@@ -18,15 +32,10 @@ public class Score {
         return homeGoals + awayGoals;
     }
 
-    public void scoreGoal(Side side) {
-        switch (side) {
-            case HOME:
-                homeGoals++;
-                break;
-            case AWAY:
-                awayGoals++;
-                break;
-        }
+    public void updateScore(Score newScore) {
+        Objects.requireNonNull(newScore, "Score can't be null!");
+        this.homeGoals = newScore.getHomeGoals();
+        this.awayGoals = newScore.getAwayGoals();
     }
 
 }
