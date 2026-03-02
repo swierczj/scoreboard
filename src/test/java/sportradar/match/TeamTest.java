@@ -35,14 +35,6 @@ class TeamTest {
         assertEquals("teamA", team.getName());
     }
 
-//    @Test
-//    void isTeamNameTest() {
-//        Team team = new Team(" teamA ");
-//
-//        assertNotEquals(" teamA ", team.getName());
-//        assertEquals("teamA", team.getName());
-//    }
-
     @Test
     void hashCodeRemainsTheSameTest() {
         Team team = new Team("teamA");
@@ -76,14 +68,5 @@ class TeamTest {
         assertNotEquals(null, team);
         assertNotEquals("teamA", team);
     }
-
-//    @Test
-//    void sameTeamsTest() {
-//        Set<Team> teamsSet = new HashSet<>();
-//        Team team = new Team("teamA");
-//        Team teamA = new Team("teamA");
-//        teamsSet.add(team);
-//        teamsSet.add(teamA);
-//    }
 
 }

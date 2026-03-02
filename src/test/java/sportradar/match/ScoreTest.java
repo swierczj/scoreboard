@@ -3,7 +3,7 @@ package sportradar.match;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class ScoreTest {
 
@@ -21,24 +21,35 @@ class ScoreTest {
         assertEquals(0, score.getAwayGoals());
     }
 
-    // TODO: change it, score goal doesn't exist now
     @Test
-    void homeSideScoresGoalTest() {
-        score.scoreGoal(Side.HOME);
-
-        assertEquals(1, score.getHomeGoals());
-        assertEquals(0, score.getAwayGoals());
-        assertEquals(1, score.getTotalGoalsScored());
+    void initializingWithNegativeScoreFailsTest() {
+        assertThrows(IllegalArgumentException.class, () -> new Score(-1, 0));
+        assertThrows(IllegalArgumentException.class, () -> new Score(0, -1));
     }
 
-    // TODO: same as above
     @Test
-    void awaySideScoresGoalTest() {
-        score.scoreGoal(Side.AWAY);
+    void updateScoreTest() {
+        score.updateScore(new Score(3, 1));
 
+        assertEquals(4, score.getTotalGoalsScored());
+        assertEquals(3, score.getHomeGoals());
         assertEquals(1, score.getAwayGoals());
-        assertEquals(0, score.getHomeGoals());
-        assertEquals(1, score.getTotalGoalsScored());
+    }
+
+    @Test
+    void updateScoreWithNullFailsTest() {
+        assertThrows(NullPointerException.class, () -> score.updateScore(null));
+    }
+
+    @Test
+    void scoreEqualsTest() {
+        score.updateScore(new Score(3, 1));
+        Score otherEqual = new Score(3, 1);
+        Score reversed = new Score(1, 3);
+
+        assertEquals(otherEqual, score);
+        assertNotEquals(reversed, score);
+        assertNotEquals(null, score);
     }
 
 }

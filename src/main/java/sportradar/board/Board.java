@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-// for current purpose implemented as singleton
 public class Board {
 
     public static Board board;
@@ -55,6 +54,10 @@ public class Board {
         }
 
         matches.get(index).getScore().updateScore(updatedScore);
+    }
+
+    public void resetBoard() {
+        matches.clear();
     }
 
 }

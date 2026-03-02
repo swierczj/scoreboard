@@ -38,4 +38,15 @@ public class Score {
         this.awayGoals = newScore.getAwayGoals();
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Score score = (Score) o;
+        return homeGoals == score.homeGoals && awayGoals == score.awayGoals;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(homeGoals, awayGoals);
+    }
 }

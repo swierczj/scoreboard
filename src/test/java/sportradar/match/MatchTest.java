@@ -1,21 +1,10 @@
 package sportradar.match;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 class MatchTest {
-    
-    private Match match;
-
-    @BeforeEach
-    void setUp() {
-        Team homeTeam = new Team("Home");
-        Team awayTeam = new Team("Away");
-        match = new Match(homeTeam, awayTeam);
-    }
 
     @Test
     void nullTeamsTest() {
@@ -23,28 +12,27 @@ class MatchTest {
         assertTrue(exception.getMessage().contains("Team cannot be null!"));
     }
 
-//    @Test
-    // test if score is 0-0 at the start
-    // test home team setting by getHomeTeam and do the same with away team
+    @Test
+    void matchOfTest() {
+        Match matchOf = Match.of("Home", "Away");
 
-//    @Test
-//    void startMatchTest() {
-//        match.startMatch();
-//
-//        assertFalse(match.isFinished());
-//    }
-//
-//    @Test
-//    void startAndFinishMatchTest() {
-//        match.startMatch();
-//        match.finishMatch();
-//
-//        assertTrue(match.isFinished());
-//    }
-//
-//    @Test
-//    void createdMatchIsNotStartedByDefaultTest() {
-//        assertTrue(match.isFinished());
-//    }
+        assertEquals("Home", matchOf.getHomeTeam().getName());
+        assertEquals("Away", matchOf.getAwayTeam().getName());
+        assertEquals(0, matchOf.getScore().getHomeGoals());
+        assertEquals(0, matchOf.getScore().getAwayGoals());
+    }
+
+    @Test
+    void nullMatchOfTest() {
+        NullPointerException exception = assertThrows(NullPointerException.class, () -> Match.of(null, null));
+        assertTrue(exception.getMessage().contains("Team name cannot be null!"));
+    }
+
+    @Test
+    void matchEqualsTest() {
+        assertEquals(Match.of("home", "away"), Match.of("Home", "Away"));
+        assertNotEquals(Match.of("home", "away"), Match.of("away", "home"));
+        assertNotEquals(null, Match.of("home", "away"));
+    }
 
 }
